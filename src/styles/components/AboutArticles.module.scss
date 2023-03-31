@@ -1,0 +1,118 @@
+@import "../utilities/functions";
+@import "../utilities/variables";
+
+.articles {
+    width: calc(100% - 100px - 1rem);
+    display: flex;
+    grid-template-columns: 1fr 55px;
+    gap: 1rem;
+
+    @media screen and (max-width: 1000px) {
+        width: calc(100% - 60px);
+    }
+
+    &_box {
+        width: calc(100% - 55px);
+    }
+
+    &_options {
+        flex: 1 1 auto;
+        max-width: 55px;
+        padding: 0 rem(5px);
+    }
+
+    &_btn {
+        width: 45px;
+        height: 45px;
+        border: solid 3px $black;
+        border-radius: 50%;
+        background-color: transparent;
+        margin-bottom: 1rem;
+        rotate: var(--btnRotate, 0);
+        transition: border-radius .3s ease, rotate .3s ease;
+
+        &:hover {
+            border-radius: 0;
+            --btnRotate: 90deg;
+            --iconRotate: -90deg;
+        }
+
+        &_icon {
+            rotate: var(--iconRotate, 0);
+            transition: rotate .3s ease;
+        }
+    }
+}
+
+.article {
+    width: 100%;
+    max-width: 270px;
+    cursor: pointer;
+    padding-right: 1rem;
+
+    @media screen and (max-width: 1100px) {
+        max-width: 100%;
+    }
+    @media screen and (max-width: 1000px) {
+        max-width: 100%;
+    }
+
+    &:hover {
+        --coverEvents: all;
+        --coverOp: 1;
+    }
+
+    &_img {
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(5px 5px 7px rgba(0,0,0,.2));
+
+        &_box {
+            width: 100%;
+            height: auto;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &_cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: rgba($color: #000000, $alpha: 1.0);
+        padding: 2rem;
+        pointer-events: var(--coverEvents, none);
+        opacity: var(--coverOp,0);
+        transition: opacity .3s ease;
+
+        &.soldout {
+            background-color: rgba($color: $pink, $alpha: 0.9);
+        }
+
+        &.open {
+            color: $yellow;
+            background-color: rgba(0,0,0,.8);
+        }
+        &_text {
+            padding: 1rem;
+        }
+
+        &_icon {
+            width: 25%;
+            height: auto;
+        }
+    }
+
+    &_title {
+        min-height: 60px;
+        font-size: rem(18px);
+        font-weight: 400;
+    }
+}

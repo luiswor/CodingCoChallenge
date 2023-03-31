@@ -1,0 +1,119 @@
+@import "../utilities/variables";
+@import "../utilities/functions";
+
+.footer {
+    width: 100%;
+    margin-top: auto;
+    background-color: $footer_bg;
+
+    @media screen and (max-width: 700px) {
+        --wrap: wrap;
+        --direction: column;
+        --order: 2;
+        --align: center;
+        --menuDisplay: none;
+        --mobileDisplay: block;
+        --pad: 2rem;
+    }
+  
+
+    &_menu {
+        width: 100%;
+        height: $footerMenuHeight;
+        background-color: $pink;
+        color: $black;
+        display: var(--menuDisplay, flex);
+        justify-content: center;
+        align-items: center;
+
+        &_list {
+            width: 100%;
+            max-width: max-content;
+            display: flex;
+            border-right: solid thin $black;
+        }
+
+        &_item {
+            padding: 5px 16px;
+            border-left: solid thin $black;
+            font-weight: 500;
+            color: var(--itemColor, $black);
+            transition: color .3s ease;
+
+            &:hover {
+                --itemColor: #{$white};
+            }
+        }
+
+        &_mobile {
+            display: var(--mobileDisplay, none);
+            width: 100%;
+
+            &_item {
+                color: $footer_text;
+                padding: 5px 10px;
+                font-size: rem(20px);
+            }
+        }
+    }
+    
+    &_content {
+        width: 100%;
+        display: flex;
+        flex-flow: var(--wrap) var(--direction);
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem $lateral;
+    }
+
+    &_social {
+        display: flex;
+        order: var(--order);
+        justify-content: center;
+        padding: var(--pad, 0) 0;
+
+        &_icon {
+           height: 20px; 
+           cursor: pointer;
+        }
+    }
+
+    &_logo {
+        flex: 1 1 100%;
+        text-align: center;
+        padding: var(--pad, 0) 10px;
+    }
+
+    &_contact {
+        min-width: 280px;
+        font-size: rem(14px);
+        line-height: 20px;
+        color: $footer_text;
+        padding: 2rem 10px;
+        text-align: var(--align, left);
+    }
+
+    &_info {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px $lateral var(--pad, 5px) $lateral;
+        font-size: rem(13px);
+        color: $footer_text;
+    }
+
+    &_address, &_copy {
+        flex: 1 1 50%;
+        min-width: 300px;
+        padding: 5px;
+    }
+
+    &_address {
+        text-align: var(--align, left);
+    }
+    &_copy {
+        text-align: var(--align, right);
+    }
+}

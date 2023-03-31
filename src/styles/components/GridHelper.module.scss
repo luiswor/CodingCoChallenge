@@ -1,0 +1,53 @@
+.grid {
+
+    &_container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        width: 100%;
+        height: 100vh;
+        pointer-events: none;
+
+        &.onlylines {
+            --showBG: transparent;
+        }
+
+        &.hide {
+            display: none;
+        }
+    }
+
+    &_columns, &_rows {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: var(--grid-dir);
+    }
+
+    &_columns {
+        z-index: 10;
+        gap: var(--gapX);
+        --grid-dir: row;
+        --cellColor: rgba(0, 255, 255, 0.273);
+    }
+
+    &_rows {
+        z-index: 5;
+        gap: var(--gapY);
+        --grid-dir: column;
+        --cellColor: rgba(28, 255, 3, 0.273);
+    }
+
+    &_cell {
+        flex: 1 1 auto;
+        background-color: var(--showBG, var(--celColor));
+        border: dotted thin var(--cellColor);
+        transition: background-color;
+
+        &:hover {
+            background-color: rgba(95, 143, 255, 0.299);
+        }
+    }
+} 

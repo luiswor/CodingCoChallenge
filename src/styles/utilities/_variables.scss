@@ -1,0 +1,22 @@
+//COLORS
+
+$black: #000000;
+$white: #ffffff;
+
+$gray1: #E9E6E1;
+$gray2: #00000029;
+$gray3: #656565;
+$footer_bg: #383838;
+$footer_text: #707070;
+$pink: #FF1F57;
+$yellow: #E1DF3C;
+$orange: #E6511B;
+$defaultBG: #E9E6E1;
+$blue: #0E64BA;
+$green: #37A87E;
+//PADDINGS AND CALCS
+$lateral: clamp(1rem, var(--LateralInterSize, 8vw), 140px);
+
+//SIZES
+$headerHeight: 64px;
+$footerMenuHeight: 56px;

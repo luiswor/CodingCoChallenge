@@ -1,0 +1,299 @@
+@import "../utilities/variables";
+
+.header {
+    width: 100%;
+    height: $headerHeight;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    display: flex;
+    background-color: var(--headerBG, transparent);
+    padding: 0 $lateral;
+    transition: background-color .2s ease;
+
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-color: $pink;
+    }
+
+    &.active {
+        --color: #{$white};
+        --headerBG: #{$pink};
+        --mixBlend: normal;
+        --filter: invert(1);
+    }
+
+    @media screen and (max-width: 1000px) {
+        --headerBG: #{$defaultBG};
+        --btnMenuDisplay: block;
+        --color: #{$black};
+        --navDisplay: none;
+        --navMobileDisplay: flex;
+        --socialDisplay: none;
+        --optionsDisplay: flex;
+    }
+}
+
+
+.nav {
+    height: 100%;
+    display: var(--navDisplay, flex);
+    align-items: center;
+    margin-left: auto;
+    mix-blend-mode: var(--mixBlend, difference);
+
+    &_menu {
+        height: 100%;
+        display: flex;
+        color: #fff;
+    }
+
+    &_item {
+        height: 100%;
+        padding: 25px 20px 20px 20px;
+        position: relative;
+        isolation: isolate;
+
+        &_link {
+            display: block;
+            font-size: 16px;
+            font-weight: 400;
+            position: relative;
+
+            &:hover {
+                --linkSX: 1;
+
+                + .nav_item_icon {
+                    --iconS: 1;
+                    --iconOp: 1;
+                }
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 1px;
+                background-color: #fff;
+                transform: scaleX(var(--linkSX, 0));
+                transform-origin: left;
+                transition: transform .3s ease-in-out;
+            }
+        }
+
+        &_icon {
+            position: absolute;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            height: 50px;
+            scale: var(--iconS,0.5);
+            translate: -50% -50% 0;
+            opacity: var(--iconOp,0);
+            transition: scale .3s ease, opacity .3s ease;
+            pointer-events: none;
+        }
+    }
+
+    &_socialbox {
+        display: var(--socialDisplay, block);
+    }
+
+    &_options {
+        display: var(--optionsDisplay, none);
+        gap: 10px;
+        height: 100%;
+        margin-left: auto;
+        align-items: center;
+        color: var(--color, $black);
+        filter: var(--filter);
+
+        &_phone {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        &_text {
+            filter: var(--filter);
+
+        }
+    }
+
+    &_btn {
+        border: none;
+        width: 35px;
+        height: 35px;
+        position: relative;
+        background-color: transparent;
+        margin: 10px;
+        cursor: pointer;
+        isolation: isolate;
+
+        &.active {
+            --lineTopRot: 30deg;
+            --lineBottomRot: -30deg;
+            --lineTopY: 7px;
+            --lineBottomY: -7px;
+            --lineScale: 0;
+        }
+
+        &_line {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: var(--color, $black);
+            transition: rotate .3s ease, translate .3s ease, scale .3s ease;
+            filter: var(--filter);
+
+            &:nth-child(1) {
+                top: 10px;
+                rotate: var(--lineTopRot, 0);
+                translate: 0 var(--lineTopY) 0;
+            }
+
+            &:nth-child(2) {
+                scale: var(--lineScale, 1);
+                transform-origin: center;
+            }
+            &:nth-child(3) {
+                bottom: 10px;
+                rotate: var(--lineBottomRot, 0);
+                translate: 0 var(--lineBottomY) 0;
+            }
+        }
+    }
+}
+
+.navmobile {
+    display: var(--navMobileDisplay, none);
+    position: fixed;
+    top: $headerHeight;
+    left: 0;
+    width: 100%;
+    max-height: var(--menuMaxH, 0);
+    height: calc(100vh - $headerHeight);
+    background-color: $defaultBG;
+    flex-direction: column;
+    overflow: auto;
+    pointer-events: var(--events, none);
+    transition: max-height .4s ease-in-out;
+
+    &.show {
+        --menuMaxH: 100vh;
+        --events: all;
+    }
+
+    &_menu {
+        width: 100%;
+        border-top: dotted 2px $black;
+    }
+
+    &_item {
+        position: relative;
+        font-size: 7vw;
+        font-weight: 700;
+        border-bottom: dotted 2px $black;
+        isolation: isolate;
+
+        &:hover {
+            --itemMobileS:1;
+            --color: #{$white};
+            --itemMobileFilter: invert(1);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background-color: $black;
+            scale: 1 var(--itemMobileS,0);
+            transform-origin: top;
+            transition: scale .2s ease-in-out;
+        }
+
+        &_link {
+            position: relative;
+            z-index: 10;
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: $black;
+            padding: 1rem;
+            text-align: center;
+            filter: var(--itemMobileFilter);
+            transition: color .3s, filter .3s;
+        }
+    }
+
+    &_info {
+        width: 100%;
+        padding: 3rem;
+        text-align: center;
+
+        &_title {
+            font-size: 7vw;
+            margin-bottom: 2rem;
+        }
+
+        &_data {
+            font-size: 4vw;
+        }
+    }
+
+    &_footer {
+        width: 100%;
+        padding: 1rem;
+        background-color: $black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &_text {
+            font-size: 7vw;
+            color: $white;
+        }
+
+        &_icon {
+            height: 60%;
+        }
+    }
+}
+
+.identity {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_link {
+        max-width: var(--identMWBase, 26px);
+        height: 100%;
+        overflow: hidden;
+        padding: 18px 0;
+    }
+
+    &_svg {
+        display: block;
+        width: max-content;
+        height: 30px;
+        fill: $white;
+        mix-blend-mode: var(--mixBlend, difference);
+
+    }
+
+
+} 

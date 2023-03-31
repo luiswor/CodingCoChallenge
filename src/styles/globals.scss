@@ -1,0 +1,70 @@
+
+@import './utilities/base.scss';
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #666;
+    cursor: pointer;
+}
+
+html, body {
+    scroll-behavior: none;
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bodyBG, $defaultBG);
+
+    @media screen and (max-width: 1200px) {
+        --LateralInterSize: 3vw;
+    }
+}
+
+#layout {
+    min-height: 300vh;
+    display: flex;
+    flex-direction: column;
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+:is(input, select, textarea):focus {
+    outline: none;
+    --itemBorder: #0E64BA;
+} 
+select:focus {
+    outline: dotted 2px #0E64BA;
+}
+a, button {
+    &:focus {
+        outline: dashed 1px #0e64bad0;
+        outline-offset: 5px;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+}
+.underline {
+    text-decoration: underline;
+}

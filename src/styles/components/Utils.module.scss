@@ -1,0 +1,34 @@
+@import "../utilities/variables";
+@import "../utilities/functions";
+
+.utils {
+    position: fixed;
+    z-index: 800;
+    bottom: 2rem;
+    right: 2rem;
+    width: max-content;
+}
+
+.chat {
+    color: $white;
+    background-color: $blue;
+    padding: 10px 10px 10px 2px;
+    border-top-left-radius: 10px;
+    transition: background-color .2s ease;
+    box-shadow: 1px 1px 10px #0000004c;
+
+    &:hover {
+        --mix: difference;
+        background-color: $yellow;
+    }
+
+    &_icon {
+        height: 20px;
+        mix-blend-mode: var(--mix);
+    }
+
+    &_text {
+        font-weight: 700;
+        mix-blend-mode: var(--mix);
+    }
+}
