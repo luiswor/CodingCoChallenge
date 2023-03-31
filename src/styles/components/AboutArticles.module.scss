@@ -30,6 +30,7 @@
         margin-bottom: 1rem;
         rotate: var(--btnRotate, 0);
         transition: border-radius .3s ease, rotate .3s ease;
+        will-change: transform, rotate;
 
         &:hover {
             border-radius: 0;
@@ -40,6 +41,7 @@
         &_icon {
             rotate: var(--iconRotate, 0);
             transition: rotate .3s ease;
+            will-change: transform, rotate;
         }
     }
 }
@@ -91,6 +93,7 @@
         pointer-events: var(--coverEvents, none);
         opacity: var(--coverOp,0);
         transition: opacity .3s ease;
+        will-change: opacity;
 
         &.soldout {
             background-color: rgba($color: $pink, $alpha: 0.9);

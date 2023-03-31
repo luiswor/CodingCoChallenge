@@ -61,6 +61,7 @@
             scale: var(--itemS,0) 1;
             transform-origin: right;
             transition: scale .3s ease-in-out;
+            will-change: transform, scale;
         }
 
         &_title {

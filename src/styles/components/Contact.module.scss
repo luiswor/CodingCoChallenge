@@ -134,6 +134,7 @@
                 scale: 1 var(--btnScale, 0);
                 transform-origin: bottom;
                 transition: scale .1s ease-in-out;
+                will-change: transform, scale;
             }
         }
     }

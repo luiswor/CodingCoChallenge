@@ -86,6 +86,7 @@
                 transform: scaleX(var(--linkSX, 0));
                 transform-origin: left;
                 transition: transform .3s ease-in-out;
+                will-change: transform;
             }
         }
 
@@ -99,6 +100,7 @@
             translate: -50% -50% 0;
             opacity: var(--iconOp,0);
             transition: scale .3s ease, opacity .3s ease;
+            will-change: transform, scale;
             pointer-events: none;
         }
     }
@@ -152,6 +154,7 @@
             height: 1px;
             background-color: var(--color, $black);
             transition: rotate .3s ease, translate .3s ease, scale .3s ease;
+            will-change: transform, rotate, translate, scale;
             filter: var(--filter);
 
             &:nth-child(1) {
@@ -186,6 +189,7 @@
     overflow: auto;
     pointer-events: var(--events, none);
     transition: max-height .4s ease-in-out;
+    will-change: contents;
 
     &.show {
         --menuMaxH: 100vh;
@@ -222,6 +226,7 @@
             scale: 1 var(--itemMobileS,0);
             transform-origin: top;
             transition: scale .2s ease-in-out;
+            will-change: transform, scale;
         }
 
         &_link {

@@ -112,6 +112,7 @@
             grid-column: 10/11;
             grid-row: 11/12;
             animation: updown .6s alternate infinite ease;
+            will-change: transform, translate;
 
             @media screen and (max-width: 1100px) {
                 grid-column: 2/3;
@@ -215,6 +216,7 @@
             height: auto;
             position: absolute;
             animation: twist 2s alternate infinite ease;
+            will-change: rotate, transform;
         }
 
         &_blue {
