@@ -31,6 +31,8 @@ export default function NewsSection() {
                 )}
             />
         </div>
+        <Image className={`${styles.news_img} ${styles.cloud}`} src="/cloud.svg" width={300} height={200} alt="cloud" />
+        <Image className={`${styles.news_img} ${styles.asterisk}`} src="/black-asterisk.svg" width={300} height={200} alt="asterisk" />
     </section>
   )
 }

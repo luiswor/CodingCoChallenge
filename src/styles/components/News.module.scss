@@ -5,17 +5,41 @@
     width: 100%;
     min-height: 30vh;
     padding: rem(100px) $lateral;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
 
     &_title {
         width: 100%;
         text-align: center;
         font-size: clamp(rem(30px), 4vw, rem(60px));
-        margin-bottom: 2rem;
+        margin-bottom: 5rem;
     }
 
     &_content {
         width: 100%;
 
+    }
+
+    &_img {
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+
+        &.cloud {
+            width: 30vw;
+            min-width: 200px;
+            height: auto;
+            right: -10%;
+            bottom: -10%;
+        }
+
+        &.asterisk {
+            width: 15vw;
+            height: auto;
+            top: -7%;
+            left: -8%;
+        }
     }
 }
 
