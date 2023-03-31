@@ -91,6 +91,9 @@
             &:invalid {
                 --itemBorder: #{$orange};
             }
+            &:placeholder-shown{
+                --itemBorder: #{$gray1};
+            }
         }
 
         &_select {
